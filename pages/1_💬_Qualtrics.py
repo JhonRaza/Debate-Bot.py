@@ -65,14 +65,6 @@ if user_input:
     ] + [
         m for m in st.session_state.messages[1:]
     ]
-    # Display chat history using Streamlit's chat_message
-    for msg in st.session_state.messages[1:]:
-        if msg["role"] == "user":
-            with st.chat_message("user"):
-                st.markdown(msg["content"])
-        elif msg["role"] == "assistant":
-            with st.chat_message("assistant"):
-                st.markdown(msg["content"])
 
     # Get response from OpenAI
     response = client.chat.completions.create(
@@ -114,5 +106,3 @@ if help_call:
         elif msg["role"] == "assistant":
             with st.sidebar.chat_message("assistant"):
                 st.markdown(msg["content"])
-    
-    st.rerun()
